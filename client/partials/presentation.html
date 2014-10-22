@@ -1,4 +1,4 @@
-<div ng-if='isAuthenticated()'>
+<div ng-if='isAuthenticated()' ng-controller='PresentationController'>
     <form ng-submit='addPresentation()'>
         <select ng-model="duration" id="duration">
             <option value="1">1 minute</option>

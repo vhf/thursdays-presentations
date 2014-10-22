@@ -19,7 +19,6 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'PresentationController'
     })
     .when('/login', {
-      templateUrl: '/partials/presentation.html',
       controller: 'LoginController'
     })
     .when('/logout', {
