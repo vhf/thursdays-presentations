@@ -47,7 +47,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
     .success(function(data, status, headers, config) {
       $scope.list = data;
     });
-})
+});
 
 
 app.controller("LoginController", function($scope, $auth, $location) {
