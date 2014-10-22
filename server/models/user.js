@@ -3,10 +3,8 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
   hsId: Number,
   displayName: String,
-  zulipEmail: String,
   email: String,
-  image: String,
-  credits: { type: Number, default: 0 }
+  image: String
 }, {
   // we need to set this so empty object can be persisted
   minimize: false
