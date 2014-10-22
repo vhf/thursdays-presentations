@@ -1,0 +1,24 @@
+{
+  "name": "hs-presentation",
+  "version": "0.0.22",
+  "description": "hs-presentation",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "express": "~4.2.0",
+    "body-parser": "~1.0.0",
+    "jade": "~1.7.0",
+    "satellizer": "~0.7.0",
+    "request": "~2.44.0",
+    "moment": "~2.8.3",
+    "jwt-simple": "~0.2.0",
+    "mongoose": "~3.8.17",
+    "bower": "~1.3.12"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  }
+}
