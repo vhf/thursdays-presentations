@@ -1,6 +1,9 @@
 <div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
     <div class="large-6 columns">
-        <form ng-submit='addPresentation()' ng-if='!alreadyPresenting'>
+        <div ng-if="alreadyPresenting">
+            You're already presenting!
+        </div>
+        <form ng-submit='addPresentation()'>
             <select ng-model="duration" id="duration">
                 <option value="1">1 minute</option>
                 <option value="2">2 minutes</option>

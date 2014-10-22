@@ -64,7 +64,10 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
           $http.get('/api/list')
             .success(function(data, status, headers, config) {
               $scope.list = data;
-              $scope.alreadyPresenting = true;
+              setTimeout(function(){
+                console.log('Timing out...')
+                $scope.alreadyPresenting = true;
+              }, 1000)
             });
         }
       });
