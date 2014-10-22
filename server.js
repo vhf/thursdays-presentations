@@ -26,10 +26,10 @@ var User = require('./server/models/user');
 app.use('/api', apiRoutes);
 app.use('/auth', authRoutes);
 
-// // redirect non-angular URL to an angular URL
-// app.get('*', function(req, res) {
-//   res.redirect('/#' + req.originalUrl);
-// });
+// redirect non-angular URL to an angular URL
+app.get('*', function(req, res) {
+  res.redirect('/#' + req.originalUrl);
+});
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

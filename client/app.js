@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('ppRouletteApp', ['ngRoute', 'satellizer', 'mm.foundation', 'mm.foundation.topbar']);
+var app = angular.module('presentations', ['ngRoute', 'satellizer', 'mm.foundation', 'mm.foundation.topbar']);
 
 app.config(function($authProvider) {
   $authProvider.oauth2({
@@ -19,7 +19,7 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'PresentationController'
     })
     .when('/login', {
-      templateUrl: '/partials/login.html',
+      templateUrl: '/partials/presentation.html',
       controller: 'LoginController'
     })
     .when('/logout', {
@@ -56,7 +56,7 @@ app.controller("LoginController", function($scope, $auth, $location) {
 
   $scope.$watch('isAuthenticated', function(isAuthenticated) {
     if (isAuthenticated){
-      $location.path('/dashboard');
+      $location.path('/');
     }
   });
 
@@ -67,15 +67,3 @@ app.controller("LoginController", function($scope, $auth, $location) {
   };
 
 });
-
-app.controller("DashboardController", function($scope, $http) {
-  $http.get('/api/user/me')
-    .success(function(data, status, headers, config) {
-      $scope.user = data;
-    });
-  $http.get('/api/session/status')
-    .success(function(data, status, headers, config) {
-      $scope.sessionStatus = data;
-    });
-});
-
