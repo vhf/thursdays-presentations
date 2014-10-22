@@ -7,9 +7,12 @@ module.exports.addPresentation = function(req, res) {
   var presentation = new Presentation(req.body);
   presentation.presenterId = req.hsId;
   presentation.duration = req.body.duration;
-  console.log(presentation);
-  presentation.save();
-  res.send({'result': 'ok'});
+  User.getUserById(req.hsId, function(err, user) {
+    presentation.presenterName = user.displayName;
+    console.log(presentation);
+    presentation.save();
+    res.send({'result': 'ok'});    
+  });
 };
 
 

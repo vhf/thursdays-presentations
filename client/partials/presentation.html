@@ -1,20 +1,21 @@
-<div ng-if='isAuthenticated()' ng-controller='PresentationController'>
-    <form ng-submit='addPresentation()'>
-        <select ng-model="duration" id="duration">
-            <option value="1">1 minute</option>
-            <option value="2">2 minutes</option>
-            <option value="3">3 minutes</option>
-            <option value="4">4 minutes</option>
-            <option value="5">5 minutes</option>
-        </select>
-        <p>
-            <button type="submit">Submit</button>
-        </p>
-    </form>
+<div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
+    <div class="large-6 columns">
+        <form ng-submit='addPresentation()'>
+            <select ng-model="duration" id="duration">
+                <option value="1">1 minute</option>
+                <option value="2">2 minutes</option>
+                <option value="3">3 minutes</option>
+                <option value="4">4 minutes</option>
+                <option value="5">5 minutes</option>
+            </select>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+        <div data-ng-repeat='presentation in list'>
+            {{ presentation.presenterName }}
+            {{ presentation.duration }} minutes
+        </div>
+    </div>
 </div>
 
-
-<div data-ng-repeat='presentation in list'>
-    {{ presentation.presenterId }}
-    {{ presentation.duration }}
-</div>

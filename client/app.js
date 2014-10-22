@@ -47,7 +47,6 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       $scope.list = data;
     });
 
-  // $scope.duration = 5;
 
   $scope.addPresentation = function(){
     var presentation = {
@@ -58,7 +57,10 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       .success(function(data, status, headers, config) {
         console.log($scope.duration)
         if (!data.error) {
-          $location.path('/');
+            $http.get('/api/list')
+              .success(function(data, status, headers, config) {
+                $scope.list = data;
+              });
         }
       });
 
