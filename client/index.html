@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="presentations">
+<head>
+  <meta charset="UTF-8">
+  <title>Thursday Presentations</title>
+  <link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body ng-controller="AuthController">
+
+  <div class="contain-to-grid">
+    <top-bar>
+      <ul class="title-area">
+        <li class='name'>
+          <h1><a href="/">Thursday Presentations</a></h1>
+        </li>
+        <li toggle-top-bar class="menu-icon"><a href="#">Menu</a></li>
+      </ul>
+      <section class="top-bar-section" id="navigation">
+        <ul class="right">
+          <li ng-if="!isAuthenticated()"><span ng-controller="LoginController"><button ng-click="authenticate('hackerschool')">Log in</button></span></li>
+          <li ng-if="isAuthenticated()">
+            <a href="/#/logout">Log out</a>
+          </li>
+        </ul>
+      </section>
+    </top-bar>
+  </div>
+
+  <div class="row"><div class="large-12 columns">&nbsp;</div></div>
+
+  <div ng-view></div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/satellizer/satellizer.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <script src="bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
