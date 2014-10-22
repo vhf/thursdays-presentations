@@ -1,3 +1,19 @@
+<div ng-if='isAuthenticated()'>
+    <form ng-submit='addPresentation()'>
+        <select name="duration" ng-model="duration" id="duration">
+            <option value="1">1 minute</option>
+            <option value="2">2 minutes</option>
+            <option value="3">3 minutes</option>
+            <option value="4">4 minutes</option>
+            <option value="5">5 minutes</option>
+        </select>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</div>
+
+
 <div data-ng-repeat='presentation in list'>
     {{ presentation.presenterId }}
     {{ presentation.duration }}

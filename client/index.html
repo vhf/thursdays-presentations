@@ -19,7 +19,11 @@
       </ul>
       <section class="top-bar-section" id="navigation">
         <ul class="right">
-          <li ng-if="!isAuthenticated()"><span ng-controller="LoginController"><button ng-click="authenticate('hackerschool')">Log in</button></span></li>
+          <li ng-if="!isAuthenticated()">
+            <span ng-controller="LoginController">
+              <button ng-click="authenticate('hackerschool')">Log in</button>
+            </span>
+          </li>
           <li ng-if="isAuthenticated()">
             <a href="/#/logout">Log out</a>
           </li>

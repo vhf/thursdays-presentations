@@ -47,6 +47,20 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
     .success(function(data, status, headers, config) {
       $scope.list = data;
     });
+
+  $scope.addPresentation = function(){
+    var presentation = {
+      'duration': $scope.duration
+    };
+
+    $http.post('/api/add', presentation)
+      .success(function(data, status, headers, config) {
+        if (!data.error) {
+          $location.path('/');
+        }
+      });
+
+  } 
 });
 
 
