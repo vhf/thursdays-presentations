@@ -47,6 +47,11 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       $scope.list = data;
     });
 
+  $http.get('/api/user/me')
+    .success(function(data, status, headers, config) {
+      $scope.currentUser = data;
+    });
+
 
   $scope.addPresentation = function(){
     var presentation = {
@@ -55,16 +60,14 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
 
     $http.post('/api/add', presentation)
       .success(function(data, status, headers, config) {
-        console.log($scope.duration)
         if (!data.error) {
-            $http.get('/api/list')
-              .success(function(data, status, headers, config) {
-                $scope.list = data;
-              });
+          $http.get('/api/list')
+            .success(function(data, status, headers, config) {
+              $scope.list = data;
+            });
         }
       });
-
-  } 
+  };
 });
 
 

@@ -13,8 +13,15 @@
             </p>
         </form>
         <div data-ng-repeat='presentation in list'>
-            {{ presentation.presenterName }}
-            {{ presentation.duration }} minutes
+            <span ng-if='currentUser.hsId == presentation.presenterId'>
+                {{ presentation.presenterName }}
+                {{ presentation.duration }} minutes
+                CANCEL
+            </span>
+            <span ng-if='currentUser.hsId != presentation.presenterId'>
+                {{ presentation.presenterName }}
+                {{ presentation.duration }} minutes
+            </span>
         </div>
     </div>
 </div>
