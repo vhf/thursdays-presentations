@@ -9,14 +9,16 @@
                 <option value="5">5 minutes</option>
             </select>
             <p>
-                <button type="submit">Submit</button>
+                <button type="submit" class='small'>Submit</button>
             </p>
         </form>
         <div data-ng-repeat='presentation in list'>
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
                 {{ presentation.duration }} minutes
-                CANCEL
+                <form ng-submit='cancelPresentation()'>
+                    <button type='submit' class='small'>Cancel</button>
+                </form>
             </span>
             <span ng-if='currentUser.hsId != presentation.presenterId'>
                 {{ presentation.presenterName }}

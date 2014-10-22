@@ -68,6 +68,19 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
         }
       });
   };
+
+  $scope.cancelPresentation = function() {
+    $http.post('/api/cancel')
+      .success(function(data, status, headers, config){
+        if (!data.error) {
+          console.log(data);
+          $http.get('/api/list')
+            .success(function(data, status, headers, config) {
+              $scope.list = data;
+            });
+        }
+      });
+  }
 });
 
 

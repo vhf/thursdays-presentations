@@ -17,8 +17,7 @@ module.exports.addPresentation = function(req, res) {
 
 
 module.exports.cancelPresentation = function(req, res) {
-  toCancel = req.body.id;
-  Presentation.findOneAndRemove(function(err, deleted) {
+  Presentation.findOneAndRemove({'presenterId': req.hsId}, function(err, deleted) {
     res.send({'result': 'ok'});
   });
 };
