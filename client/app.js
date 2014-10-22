@@ -48,13 +48,16 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       $scope.list = data;
     });
 
+  // $scope.duration = 5;
+
   $scope.addPresentation = function(){
     var presentation = {
-      'duration': $scope.duration
+      'duration': parseInt($scope.duration, 10)
     };
 
     $http.post('/api/add', presentation)
       .success(function(data, status, headers, config) {
+        console.log($scope.duration)
         if (!data.error) {
           $location.path('/');
         }

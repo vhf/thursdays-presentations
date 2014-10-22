@@ -6,7 +6,8 @@ var User = require('../models/user');
 module.exports.addPresentation = function(req, res) {
   var presentation = new Presentation(req.body);
   presentation.presenterId = req.hsId;
-  console.log(presentation)
+  presentation.duration = req.body.duration;
+  console.log(presentation);
   presentation.save();
   res.send({'result': 'ok'});
 };
