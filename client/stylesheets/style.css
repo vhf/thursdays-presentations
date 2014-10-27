@@ -1,0 +1,14 @@
+.show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.show-hide.ng-hide {
+  opacity:0;
+}

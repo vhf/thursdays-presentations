@@ -52,6 +52,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       $scope.currentUser = data;
     });
 
+  $scope.duration = 5;
 
   $scope.addPresentation = function(){
     var presentation = {
@@ -64,10 +65,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
           $http.get('/api/list')
             .success(function(data, status, headers, config) {
               $scope.list = data;
-              setTimeout(function(){
-                console.log('Timing out...')
-                $scope.alreadyPresenting = true;
-              }, 1000)
+              $scope.alreadyPresenting = presenting();
             });
         }
       });
@@ -77,15 +75,22 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
     $http.post('/api/cancel')
       .success(function(data, status, headers, config){
         if (!data.error) {
-          console.log(data);
           $http.get('/api/list')
             .success(function(data, status, headers, config) {
               $scope.list = data;
-              $scope.alreadyPresenting = false;
+              $scope.alreadyPresenting = presenting();
             });
         }
       });
+  };
+
+  function presenting() {
+    $http.get('/api/presenting')
+      .success(function(data, status, headers, config){
+        $scope.alreadyPresenting = data.presenting;
+      });
   }
+  $scope.alreadyPresenting = presenting();
 });
 
 

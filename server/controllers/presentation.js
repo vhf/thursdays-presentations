@@ -11,10 +11,9 @@ module.exports.addPresentation = function(req, res) {
       presentation.duration = req.body.duration;
       User.getUserById(req.hsId, function(err, user) {
         presentation.presenterName = user.displayName;
-        console.log(presentation);
         presentation.save();
-        res.send({'result': 'ok'});    
-      });      
+        res.send({'result': 'ok'});
+      });
     } else {
       res.send({'error': 'already presenting'});
     }
@@ -32,5 +31,11 @@ module.exports.cancelPresentation = function(req, res) {
 module.exports.listPresentation = function(req, res) {
   Presentation.find({}).exec(function(err, presentations) {
     res.json(presentations);
+  });
+};
+
+module.exports.presenting = function(req, res) {
+  Presentation.find({'presenterId': req.hsId}).count(function(err, count) {
+    res.json({'presenting': (count === 1)});
   });
 };

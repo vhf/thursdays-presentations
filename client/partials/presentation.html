@@ -1,20 +1,20 @@
 <div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
     <div class="large-6 columns">
-        <div ng-if="alreadyPresenting">
-            You're already presenting!
+        <div ng-show="alreadyPresenting === false">
+            <form ng-submit='addPresentation()'>
+                <select ng-model="duration" id="duration">
+                    <option value="1">1 minute</option>
+                    <option value="2">2 minutes</option>
+                    <option value="3">3 minutes</option>
+                    <option value="4">4 minutes</option>
+                    <option value="5">5 minutes</option>
+                </select>
+                <p>
+                    <button type="submit" class='small'>Submit</button>
+                </p>
+            </form>
+
         </div>
-        <form ng-submit='addPresentation()'>
-            <select ng-model="duration" id="duration">
-                <option value="1">1 minute</option>
-                <option value="2">2 minutes</option>
-                <option value="3">3 minutes</option>
-                <option value="4">4 minutes</option>
-                <option value="5">5 minutes</option>
-            </select>
-            <p>
-                <button type="submit" class='small'>Submit</button>
-            </p>
-        </form>
         <div data-ng-repeat='presentation in list'>
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
