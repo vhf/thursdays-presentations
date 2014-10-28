@@ -1,7 +1,7 @@
-<div class='row' ng-controller='PresentationController'>
+<div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
     <div class="large-6 columns" ng-show="isThursday">
         Time left: {{ 60-totalTime }}
-        <div ng-if='isAuthenticated()' ng-show="alreadyPresenting === false && totalTime < 60">
+        <div ng-show="alreadyPresenting === false && totalTime < 60">
             <form ng-submit='addPresentation()'>
                 <select ng-model="duration" id="duration">
                     <option value="1">1 minute</option>
@@ -16,20 +16,22 @@
             </form>
 
         </div>
-        <div data-ng-repeat='presentation in list'>
-            <span ng-if='currentUser.hsId == presentation.presenterId'>
-                {{ presentation.presenterName }}
-                {{ presentation.duration }} minutes
-                <form ng-submit='cancelPresentation()'>
-                    <button type='submit' class='small'>Cancel</button>
-                </form>
-            </span>
-            <span ng-if='currentUser.hsId != presentation.presenterId'>
-                {{ presentation.presenterName }}
-                {{ presentation.duration }} minutes
-            </span>
-        </div>
     </div>
     <div class="large-12 columns" ng-hide="isThursday">NOT THURSDAY</div>
+</div>
+<div class='row' data-ng-repeat='presentation in list'>
+    <div class="large-6 columns">    
+        <span ng-if='currentUser.hsId == presentation.presenterId'>
+            {{ presentation.presenterName }}
+            {{ presentation.duration }} minutes
+            <form ng-submit='cancelPresentation()'>
+                <button type='submit' class='small'>Cancel</button>
+            </form>
+        </span>
+        <span ng-if='currentUser.hsId != presentation.presenterId'>
+            {{ presentation.presenterName }}
+            {{ presentation.duration }} minutes
+        </span>
+    </div>
 </div>
 
