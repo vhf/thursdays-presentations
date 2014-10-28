@@ -1,22 +1,32 @@
-<div class='row' ng-controller='PresentationController'>
-    <div class="large-6 columns" ng-show="isThursday">
-        Time left: {{ 60-totalTime }}
-        <div ng-hide='!isAuthenticated()' ng-show="alreadyPresenting === false && totalTime < 60">
-            <form ng-submit='addPresentation()'>
-                <select ng-model="duration" id="duration">
-                    <option value="1">1 minute</option>
-                    <option value="2">2 minutes</option>
-                    <option value="3">3 minutes</option>
-                    <option value="4">4 minutes</option>
-                    <option value="5">5 minutes</option>
-                </select>
-                <p>
-                    <button type="submit" class='small'>Submit</button>
-                </p>
-            </form>
-
+<div ng-controller='PresentationController'>
+    <div class="row">
+        <div class="large-12 columns">
+            Presentation time left: {{ 60-totalTime }}
         </div>
-        <div data-ng-repeat='presentation in list'>
+    </div>
+    <div class='row' ng-show='isAuthenticated() && isThursday && !alreadyPresenting && totalTime < 60'>
+        <div class="large-6 columns">
+            <div>
+                <form ng-submit='addPresentation()'>
+                    <select ng-model="duration" id="duration">
+                        <option value="1">1 minute</option>
+                        <option value="2">2 minutes</option>
+                        <option value="3">3 minutes</option>
+                        <option value="4">4 minutes</option>
+                        <option value="5">5 minutes</option>
+                    </select>
+                    <p>
+                        <button type="submit" class='small'>Submit</button>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+        <div class="large-12 columns" ng-hide="isThursday">NOT THURSDAY</div>
+    </div>
+
+    <div class='row' data-ng-repeat='presentation in list'>
+        <div class="large-6 columns">
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
                 {{ presentation.duration }} minutes
@@ -30,6 +40,4 @@
             </span>
         </div>
     </div>
-    <div class="large-12 columns" ng-hide="isThursday">NOT THURSDAY</div>
 </div>
-
