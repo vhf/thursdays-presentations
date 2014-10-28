@@ -1,5 +1,5 @@
 <div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
-    <div class="large-6 columns">
+    <div class="large-6 columns" ng-show="isThursday">
         <div ng-show="alreadyPresenting === false">
             <form ng-submit='addPresentation()'>
                 <select ng-model="duration" id="duration">
@@ -29,5 +29,6 @@
             </span>
         </div>
     </div>
+    <div class="large-12 columns" ng-hide="isThursday">NOT THURSDAY</div>
 </div>
 
