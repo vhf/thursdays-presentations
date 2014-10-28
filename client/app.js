@@ -6,9 +6,9 @@ app.config(function($authProvider) {
   $authProvider.oauth2({
     url: '/auth/hackerschool',
     name: 'hackerschool',
-    clientId: '6c63e56e006d2c972350b10425953ddb575f140d0130cf5de9cdf1abf3960c47',
+    clientId: '72aa70483fe6f57052b428bc1f99932d87234232190444567189bec28aec5dae',
     authorizationEndpoint: 'https://www.hackerschool.com/oauth/authorize',
-    redirectUri: "http://127.0.0.1:8000"
+    redirectUri: "http://thursday-presentations.herokuapp.com"
   });
 });
 
