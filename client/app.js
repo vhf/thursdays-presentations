@@ -50,10 +50,12 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       $scope.list = data;
     });
 
-  $http.get('/api/totaltime')
-    .success(function(data, status, headers, config) {
-      $scope.totalTime = data.totaltime;
-    });
+  function updateTotalTime() {
+    $http.get('/api/totaltime')
+      .success(function(data, status, headers, config) {
+        $scope.totalTime = data.totaltime;
+      });
+  }
 
   $http.get('/api/user/me')
     .success(function(data, status, headers, config) {
@@ -74,6 +76,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
             .success(function(data, status, headers, config) {
               $scope.list = data;
               $scope.alreadyPresenting = presenting();
+              updateTotalTime();
             });
         }
       });
@@ -87,6 +90,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
             .success(function(data, status, headers, config) {
               $scope.list = data;
               $scope.alreadyPresenting = presenting();
+              updateTotalTime();
             });
         }
       });
