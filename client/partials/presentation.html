@@ -1,7 +1,7 @@
 <div ng-controller='PresentationController'>
     <div class="row">
-        <div class="large-12 columns">
-            Presentation time left: {{ 60-totalTime }}
+        <div class="large-12 columns presentationtime">
+            Presentation time left: {{ 60 - totalTime }} minutes
         </div>
     </div>
     <div class='row' ng-show='isAuthenticated() && isThursday && !alreadyPresenting && totalTime < 60'>
@@ -15,18 +15,17 @@
                         <option value="4">4 minutes</option>
                         <option value="5">5 minutes</option>
                     </select>
-                    <p>
-                        <button type="submit" class='small'>Submit</button>
-                    </p>
                 </form>
 
             </div>
         </div>
-        <div class="large-12 columns" ng-hide="isThursday">NOT THURSDAY</div>
+        <button type="submit" class='tiny radius'>Submit</button>
+        <div class="large-12 columns" ng-hide="isThursday">Not a Thursday.</div>
     </div>
 
-    <div class='row' data-ng-repeat='presentation in list'>
+    <div class='row presenters' data-ng-repeat='presentation in list'>
         <div class="large-6 columns">
+            <h5>Presenters</h5>
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
                 {{ presentation.duration }} minutes

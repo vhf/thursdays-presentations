@@ -12,3 +12,20 @@
 .show-hide.ng-hide {
   opacity:0;
 }
+
+.presentationtime {
+  margin: 20px 0;
+}
+
+.presenters {
+  margin-top: 25px;
+}
+
+.presenters h5 {
+  text-transform: uppercase;
+  color: #4B8AB8;
+}
+
+button.small {
+  padding: 11px;
+}
