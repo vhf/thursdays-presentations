@@ -1,7 +1,7 @@
 <div ng-controller='PresentationController'>
     <div class="row">
         <div class="large-12 columns presentationtime">
-            Presentation time left: {{ 60 - totalTime }} minutes
+        Presentation time left: <span class='minutes'>{{ 60 - totalTime }}</span> minutes
         </div>
     </div>
     <div class='row' ng-show='isAuthenticated() && isThursday && !alreadyPresenting && totalTime < 60'>
@@ -15,7 +15,7 @@
                         <option value="4">4 minutes</option>
                         <option value="5">5 minutes</option>
                     </select>
-                    <button type="submit" class='small radius'>Submit</button>
+                    <button type="submit" class='small'>Submit</button>
                 </form>
             </div>
         </div>
