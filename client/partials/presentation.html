@@ -1,7 +1,7 @@
-<div class='row' ng-if='isAuthenticated()' ng-controller='PresentationController'>
+<div class='row' ng-controller='PresentationController'>
     <div class="large-6 columns" ng-show="isThursday">
         Time left: {{ 60-totalTime }}
-        <div ng-show="alreadyPresenting === false && totalTime < 60">
+        <div ng-if='isAuthenticated()' ng-show="alreadyPresenting === false && totalTime < 60">
             <form ng-submit='addPresentation()'>
                 <select ng-model="duration" id="duration">
                     <option value="1">1 minute</option>
