@@ -57,6 +57,8 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       });
   }
 
+  updateTotalTime();
+
   $http.get('/api/user/me')
     .success(function(data, status, headers, config) {
       $scope.currentUser = data;
