@@ -9,5 +9,6 @@ router.post('/add', authController.ensureAuthenticated, presentationController.a
 router.post('/cancel', authController.ensureAuthenticated, presentationController.cancelPresentation);
 router.get('/list', authController.ensureAuthenticated, presentationController.listPresentation);
 router.get('/presenting', authController.ensureAuthenticated, presentationController.presenting);
+router.get('/totaltime', presentationController.totalTime);
 
 module.exports = router;

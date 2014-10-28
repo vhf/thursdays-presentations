@@ -43,11 +43,16 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
   $scope.isAuthenticated = $auth.isAuthenticated;
 
   var date = new Date();
-  $scope.isThursday = date.getDay() === 4;
+  $scope.isThursday = date.getDay() === 2;
 
   $http.get('/api/list')
     .success(function(data, status, headers, config) {
       $scope.list = data;
+    });
+
+  $http.get('/api/totaltime')
+    .success(function(data, status, headers, config) {
+      $scope.totalTime = data.totaltime;
     });
 
   $http.get('/api/user/me')
