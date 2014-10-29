@@ -59,21 +59,6 @@ module.exports.totalTime = function(req, res) {
 };
 
 module.exports.zulipNotify = function(req, res) {
-  zulipNotifyStream();
-  res.json({'ok': 1});
-};
-
-function getTotalTime(cb) {
-  Presentation.find({}).exec(function(err, presentations) {
-    var totalTime = 0;
-    for (var i = 0; i < presentations.length; i++) {
-      totalTime += presentations[i].duration;
-    }
-    cb(totalTime);
-  });
-}
-
-function zulipNotifyStream() {
   var client = new zulip.Client({
     email: config.ZULIP_EMAIL,
     api_key: config.ZULIP_SECRET,
@@ -85,5 +70,22 @@ function zulipNotifyStream() {
     content: content,
     to: ['bot-test'], //455 Broadway
     subject: "Tonight's presentations"
+  }, function(error, response) {
+    if (error) {
+        res.json({'error': 'something went wrong'});
+    } else {
+        res.json({'ok': 'message sent'});
+    }
+  });
+
+};
+
+function getTotalTime(cb) {
+  Presentation.find({}).exec(function(err, presentations) {
+    var totalTime = 0;
+    for (var i = 0; i < presentations.length; i++) {
+      totalTime += presentations[i].duration;
+    }
+    cb(totalTime);
   });
 }
