@@ -2,6 +2,7 @@ var config = require('../../config');
 var Presentation = require('../models/presentation');
 var User = require('../models/user');
 var moment = require('moment');
+var zulip = require('zulip');
 
 module.exports.addPresentation = function(req, res) {
   var date = new Date();
@@ -64,5 +65,20 @@ function getTotalTime(cb) {
       totalTime += presentations[i].duration;
     }
     cb(totalTime);
+  });
+}
+
+function zulipNotifyStream(description) {
+  var client = new zulip.Client({
+    email: config.ZULIP_EMAIL,
+    api_key: config.ZULIP_SECRET,
+    verbose: false
+  });
+  var content = "It's sign up time! [Sign up](http://thursday-presentations.herokuapp.com/#/) for presentations tonight."
+  client.sendMessage({
+    type: "stream",
+    content: content,
+    to: ['455 Broadway'],
+    subject: "Tonight's presentations"
   });
 }
