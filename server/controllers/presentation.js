@@ -58,6 +58,11 @@ module.exports.totalTime = function(req, res) {
   getTotalTime(function(totalTime) {res.json({'totaltime': totalTime})});
 };
 
+module.exports.zulipNotify = function(req, res) {
+  zulipNotifyStream();
+  res.json({'ok': 1});
+};
+
 function getTotalTime(cb) {
   Presentation.find({}).exec(function(err, presentations) {
     var totalTime = 0;
@@ -68,17 +73,17 @@ function getTotalTime(cb) {
   });
 }
 
-function zulipNotifyStream(description) {
+function zulipNotifyStream() {
   var client = new zulip.Client({
     email: config.ZULIP_EMAIL,
     api_key: config.ZULIP_SECRET,
     verbose: false
   });
-  var content = "It's sign up time! [Sign up](http://thursday-presentations.herokuapp.com/#/) for presentations tonight."
+  var content = "It's sign up time! [Sign up](http://thursday-presentations.herokuapp.com/#/) for presentations tonight.";
   client.sendMessage({
     type: "stream",
     content: content,
-    to: ['455 Broadway'],
+    to: ['bot-test'], //455 Broadway
     subject: "Tonight's presentations"
   });
 }

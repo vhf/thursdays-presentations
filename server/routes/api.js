@@ -10,5 +10,7 @@ router.post('/cancel', authController.ensureAuthenticated, presentationControlle
 router.get('/list', presentationController.listPresentation);
 router.get('/presenting', authController.ensureAuthenticated, presentationController.presenting);
 router.get('/totaltime', presentationController.totalTime);
+router.get('/zulip', presentationController.zulipNotify);
+router.post('/zulip', presentationController.zulipNotify);
 
 module.exports = router;
