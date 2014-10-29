@@ -1,18 +1,20 @@
 var config = require('../../config');
 var Presentation = require('../models/presentation');
 var User = require('../models/user');
+var moment = require('moment');
 
 module.exports.addPresentation = function(req, res) {
   var date = new Date();
 
   getTotalTime(function(totalTime) {
     if (totalTime < 60) {
-      if (date.getDay() === 2) {
+      if (date.getDay() === 3) {
         Presentation.find({'presenterId': req.hsId}).count(function(err, count) {
-          if(count === 0) {
+          if (count === 0) {
             var presentation = new Presentation(req.body);
             presentation.presenterId = req.hsId;
             presentation.duration = req.body.duration;
+            presentation.week = moment().week();
             User.getUserById(req.hsId, function(err, user) {
               presentation.presenterName = user.displayName;
               presentation.save();
@@ -40,7 +42,7 @@ module.exports.cancelPresentation = function(req, res) {
 
 
 module.exports.listPresentation = function(req, res) {
-  Presentation.find({}).exec(function(err, presentations) {
+  Presentation.find({'week': moment().week()}).exec(function(err, presentations) {
     res.json(presentations);
   });
 };
