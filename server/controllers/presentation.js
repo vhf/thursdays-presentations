@@ -72,7 +72,7 @@ module.exports.zulipNotify = function(req, res) {
     subject: "Tonight's presentations"
   }, function(error, response) {
     if (error) {
-        res.json({'error': 'something went wrong'});
+        res.json({'error': error});
     } else {
         res.json({'ok': 'message sent'});
     }
