@@ -68,7 +68,7 @@ module.exports.zulipNotify = function(req, res) {
   client.sendMessage({
     type: "stream",
     content: content,
-    to: ['bot-test'], //455 Broadway
+    to: ['455 Broadway'],
     subject: "Tonight's presentations"
   }, function(error, response) {
     if (error) {
