@@ -1,5 +1,5 @@
 <div ng-controller='PresentationController'>
-    <div class="row">
+    <div class="row" ng-show='isThursday'>
         <div class="large-12 columns presentationtime">
         Presentation time left: <span class='minutes'>{{ 60 - totalTime }}</span> minutes
         </div>
@@ -19,7 +19,6 @@
                 </form>
             </div>
         </div>
-        <div class="large-12 columns" ng-hide="isThursday">Not a Thursday.</div>
     </div>
 
     <div class='row presenters' data-ng-repeat='presentation in list'>
@@ -38,4 +37,7 @@
             </span>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="large-12 columns" ng-hide="isThursday">Not a Thursday.</div>
 </div>
