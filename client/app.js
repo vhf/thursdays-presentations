@@ -43,7 +43,7 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
   $scope.isAuthenticated = $auth.isAuthenticated;
 
   var date = new Date();
-  $scope.isThursday = date.getDay() === 2;
+  $scope.isThursday = date.getDay() === 4;
 
   $http.get('/api/list')
     .success(function(data, status, headers, config) {

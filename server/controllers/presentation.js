@@ -8,7 +8,7 @@ module.exports.addPresentation = function(req, res) {
 
   getTotalTime(function(totalTime) {
     if (totalTime < 60) {
-      if (date.getDay() === 3) {
+      if (date.getDay() === 4) {
         Presentation.find({'presenterId': req.hsId}).count(function(err, count) {
           if (count === 0) {
             var presentation = new Presentation(req.body);
