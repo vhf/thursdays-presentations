@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('presentations', ['ngRoute', 'satellizer', 'mm.foundation', 'mm.foundation.topbar']);
+var app = angular.module('presentations', ['ngRoute', 'satellizer', 'mm.foundation', 'mm.foundation.topbar', 'timer']);
 
 app.config(function($authProvider) {
   $authProvider.oauth2({
@@ -96,6 +96,18 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
             });
         }
       });
+  };
+
+  $scope.startTimer = function(seconds) {
+    console.log(seconds);
+    $('#timer').attr('countdown', seconds);
+    $scope.$broadcast('timer-start');
+    $scope.timerRunning = true;
+  };
+
+  $scope.stopTimer = function() {
+    $scope.$broadcast('timer-stop');
+    $scope.timerRunning = false;
   };
 
   function presenting() {

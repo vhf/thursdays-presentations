@@ -38,12 +38,22 @@
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-timer/dist/angular-timer.min.js"></script>
   <script src="bower_components/satellizer/satellizer.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
 
   <script src="bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
 
   <script src="app.js"></script>
+
+<!--  <script>
+  $(document).ready(function() {;
+      $('.minutes').on('click', function() {
+          console.log(this);
+          $('#timer').attr('interval', $(this).attr('data-time'));
+      });
+  });
+  </script>-->
 
 </body>
 </html>

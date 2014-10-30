@@ -40,3 +40,7 @@ form select {
   display: inline-block;
   width: 120px;
 }
+
+#timer {
+  font-size: 115px;
+}
