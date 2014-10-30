@@ -1,4 +1,9 @@
 <div ng-controller='PresentationController'>
+    <div class="row">
+        <div class='large-6 push-4 columns'>
+            <span id='countdown' countdown></span>
+        </div>
+    </div>
     <div class='row' ng-show='isThursday'>
         <div class='large-12 columns presentationtime'>
         Presentation time left: <span class='minutes'>{{ 60 - totalTime }}</span> minutes
@@ -40,7 +45,6 @@
                 <span class='minutes' ng-click='minutesClick(presentation.duration*60)'>{{ presentation.duration }} minutes</span>
             </span>
         </li>
-        <div class='large-6 columns'><span id='countdown' countdown></span></div>
     </div>
 </div>
 <div class='row'>
