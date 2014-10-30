@@ -105,6 +105,27 @@ app.controller("PresentationController", function($scope, $auth, $location, $htt
       });
   }
   $scope.alreadyPresenting = presenting();
+
+  $scope.minutesClick = function(seconds) {
+    $('#countdown').removeClass('highlight').countdown('destroy');
+    $('#countdown').countdown({
+      until: +seconds,
+      onTick: highlightLast5,
+      padZeroes: true,
+      format: 'M:S',
+      compact: true,
+      onExpiry: timesUp
+    });
+
+    function highlightLast5(periods) {
+      if ($.countdown.periodsToSeconds(periods) === 5) {
+        $(this).addClass('highlight');
+      }
+    }
+    function timesUp() {
+      $.playSound('alarm');
+    }
+  };
 });
 
 

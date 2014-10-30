@@ -1,47 +1,48 @@
 <div ng-controller='PresentationController'>
-    <div class="row" ng-show='isThursday'>
-        <div class="large-12 columns presentationtime">
+    <div class='row' ng-show='isThursday'>
+        <div class='large-12 columns presentationtime'>
         Presentation time left: <span class='minutes'>{{ 60 - totalTime }}</span> minutes
         </div>
     </div>
     <div class='row' ng-show='isAuthenticated() && isThursday && !alreadyPresenting && totalTime < 60'>
-        <div class="large-6 columns">
+        <div class='large-6 columns'>
             <div>
                 <form ng-submit='addPresentation()'>
-                    <select ng-model="duration" id="duration">
-                        <option value="1">1 minute</option>
-                        <option value="2">2 minutes</option>
-                        <option value="3">3 minutes</option>
-                        <option value="4">4 minutes</option>
-                        <option value="5">5 minutes</option>
+                    <select ng-model='duration' id='duration'>
+                        <option value='1'>1 minute</option>
+                        <option value='2'>2 minutes</option>
+                        <option value='3'>3 minutes</option>
+                        <option value='4'>4 minutes</option>
+                        <option value='5'>5 minutes</option>
                     </select>
-                    <button type="submit" class='small'>Submit</button>
+                    <button type='submit' class='small'>Submit</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="row presenters">
-        <div class="large-6 columns">
+    <div class='row presenters'>
+        <div class='large-6 columns'>
             <h5>Presenters</h5>
         </div>
     </div>
     <div class='row presenterslist' data-ng-repeat='presentation in list'>
-        <li class="large-6 columns">
+        <li class='large-6 columns'>
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
-                <span class='minutes'>{{ presentation.duration }} minutes</span>
+                <span class='minutes' ng-click='minutesClick(presentation.duration*60)'>{{ presentation.duration }} minutes</span>
                 <form ng-submit='cancelPresentation()' class='cancel'>
                     <button type='submit' class='tiny alert'>x</button>
                 </form>
             </span>
             <span ng-if='currentUser.hsId != presentation.presenterId'>
                 {{ presentation.presenterName }}
-                <span class='minutes'>{{ presentation.duration }} minutes</span>
+                <span class='minutes' ng-click='minutesClick(presentation.duration*60)'>{{ presentation.duration }} minutes</span>
             </span>
         </li>
+        <div class='large-6 columns'><span id='countdown' countdown></span></div>
     </div>
 </div>
-<div class="row">
-    <div class="large-12 columns" ng-hide="isThursday">Not a Thursday.</div>
+<div class='row'>
+    <div class='large-12 columns' ng-hide='isThursday'>Not a Thursday.</div>
 </div>
