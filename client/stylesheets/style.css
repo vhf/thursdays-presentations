@@ -7,11 +7,11 @@
   font-weight: 600;
 }
 
-.presenters {
+.presenterslist {
   margin-top: 25px;
 }
 
-.presenters h5 {
+h5.presenters {
   text-transform: uppercase;
   color: #4B8AB8;
 }
