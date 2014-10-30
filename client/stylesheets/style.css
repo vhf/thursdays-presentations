@@ -30,6 +30,7 @@ form.cancel {
 
 .tiny.alert {
   padding: 5px;
+  margin-bottom: 0px;
 }
 
 button.small {
