@@ -30,14 +30,14 @@
         <li class="large-6 columns">
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
-                {{ presentation.duration }} minutes
+                <span class='minutes'>{{ presentation.duration }} minutes</span>
                 <form ng-submit='cancelPresentation()'>
                     <button type='submit' class='small'>Cancel</button>
                 </form>
             </span>
             <span ng-if='currentUser.hsId != presentation.presenterId'>
                 {{ presentation.presenterName }}
-                {{ presentation.duration }} minutes
+                <span class='minutes'>{{ presentation.duration }} minutes</span>
             </span>
         </li>
     </div>
