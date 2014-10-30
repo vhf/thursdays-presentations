@@ -30,19 +30,16 @@
         <li class="large-6 columns">
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
-                <span class='minutes' ng-click='startTimer(presentation.duration*60)'>{{ presentation.duration }} minutes</span>
+                <span class='minutes'>{{ presentation.duration }} minutes</span>
                 <form ng-submit='cancelPresentation()' class='cancel'>
                     <button type='submit' class='tiny alert'>x</button>
                 </form>
             </span>
             <span ng-if='currentUser.hsId != presentation.presenterId'>
                 {{ presentation.presenterName }}
-                <span class='minutes' ng-click='startTimer(presentation.duration*60)'>{{ presentation.duration }} minutes</span>
+                <span class='minutes'>{{ presentation.duration }} minutes</span>
             </span>
         </li>
-        <div class="large-6 columns">
-            <timer countdown="10" interval="1000" finish-callback="timesUp()" id="timer" autostart="false">{{mminutes}}:{{sseconds}}</timer>
-        </div>
     </div>
 </div>
 <div class="row">
