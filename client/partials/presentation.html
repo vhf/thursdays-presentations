@@ -21,9 +21,9 @@
         </div>
     </div>
 
+    <h5>Presenters</h5>
     <div class='row presenters' data-ng-repeat='presentation in list'>
         <div class="large-6 columns">
-            <h5>Presenters</h5>
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
                 {{ presentation.duration }} minutes
