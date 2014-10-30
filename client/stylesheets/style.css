@@ -23,6 +23,15 @@
   border-bottom: 1px dashed;
 }
 
+form.cancel {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.tiny.alert {
+  padding: 5px;
+}
+
 button.small {
   padding: 11px;
 }

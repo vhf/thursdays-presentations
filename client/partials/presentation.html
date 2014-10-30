@@ -31,8 +31,8 @@
             <span ng-if='currentUser.hsId == presentation.presenterId'>
                 {{ presentation.presenterName }}
                 <span class='minutes'>{{ presentation.duration }} minutes</span>
-                <form ng-submit='cancelPresentation()'>
-                    <button type='submit' class='small'>Cancel</button>
+                <form ng-submit='cancelPresentation()' class='cancel'>
+                    <button type='submit' class='tiny alert'>x</button>
                 </form>
             </span>
             <span ng-if='currentUser.hsId != presentation.presenterId'>
