@@ -11,9 +11,16 @@
   margin-top: 25px;
 }
 
-h5.presenters {
+.presenters {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.presenters h5 {
   text-transform: uppercase;
   color: #4B8AB8;
+  font-weight: 600;
+  border-bottom: 1px dashed;
 }
 
 button.small {
