@@ -10,7 +10,7 @@ module.exports.addPresentation = function(req, res) {
   getTotalTime(function(totalTime) {
     if (totalTime < 60) {
       if (date.getDay() === 4) {
-        Presentation.find({'presenterId': req.hsId}).count(function(err, count) {
+        Presentation.find({'presenterId': req.hsId, 'week': moment().week()}).count(function(err, count) {
           if (count === 0) {
             var presentation = new Presentation(req.body);
             presentation.presenterId = req.hsId;
@@ -36,7 +36,7 @@ module.exports.addPresentation = function(req, res) {
 
 
 module.exports.cancelPresentation = function(req, res) {
-  Presentation.findOneAndRemove({'presenterId': req.hsId}, function(err, deleted) {
+  Presentation.findOneAndRemove({'presenterId': req.hsId, 'week': moment().week()}, function(err, deleted) {
     res.send({'result': 'ok'});
   });
 };
@@ -49,7 +49,7 @@ module.exports.listPresentation = function(req, res) {
 };
 
 module.exports.presenting = function(req, res) {
-  Presentation.find({'presenterId': req.hsId}).count(function(err, count) {
+  Presentation.find({'presenterId': req.hsId, 'week': moment().week()}).count(function(err, count) {
     res.json({'presenting': (count === 1)});
   });
 };
@@ -81,7 +81,7 @@ module.exports.zulipNotify = function(req, res) {
 };
 
 function getTotalTime(cb) {
-  Presentation.find({}).exec(function(err, presentations) {
+  Presentation.find({'week': moment().week()}).exec(function(err, presentations) {
     var totalTime = 0;
     for (var i = 0; i < presentations.length; i++) {
       totalTime += presentations[i].duration;
